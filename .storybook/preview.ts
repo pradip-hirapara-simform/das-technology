@@ -1,4 +1,5 @@
 import type { Preview } from "@storybook/web-components-vite";
+import './storybook.css';
 import { defineCustomElements } from '../loader';
 
 defineCustomElements();

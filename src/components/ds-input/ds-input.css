@@ -1,0 +1,4 @@
+/* Tailwind-style or custom overrides if needed */
+:host {
+    display: block;
+  }

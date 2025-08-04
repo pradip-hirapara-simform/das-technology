@@ -13,8 +13,37 @@ export namespace Components {
          */
         "variant": 'solid' | 'outline' | 'text';
     }
+    interface DsInput {
+        /**
+          * @default false
+         */
+        "disabled": boolean;
+        "error": string;
+        "label": string;
+        "name": string;
+        /**
+          * @default ''
+         */
+        "placeholder": string;
+        /**
+          * @default false
+         */
+        "required": boolean;
+        /**
+          * @default 'text'
+         */
+        "type": string;
+        /**
+          * @default ''
+         */
+        "value": string;
+    }
     interface MainApp {
     }
+}
+export interface DsInputCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLDsInputElement;
 }
 declare global {
     interface HTMLDsButtonElement extends Components.DsButton, HTMLStencilElement {
@@ -22,6 +51,25 @@ declare global {
     var HTMLDsButtonElement: {
         prototype: HTMLDsButtonElement;
         new (): HTMLDsButtonElement;
+    };
+    interface HTMLDsInputElementEventMap {
+        "input": string;
+        "blur": void;
+        "focus": void;
+    }
+    interface HTMLDsInputElement extends Components.DsInput, HTMLStencilElement {
+        addEventListener<K extends keyof HTMLDsInputElementEventMap>(type: K, listener: (this: HTMLDsInputElement, ev: DsInputCustomEvent<HTMLDsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void;
+        addEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLDsInputElementEventMap>(type: K, listener: (this: HTMLDsInputElement, ev: DsInputCustomEvent<HTMLDsInputElementEventMap[K]>) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof DocumentEventMap>(type: K, listener: (this: Document, ev: DocumentEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener<K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void;
+        removeEventListener(type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void;
+    }
+    var HTMLDsInputElement: {
+        prototype: HTMLDsInputElement;
+        new (): HTMLDsInputElement;
     };
     interface HTMLMainAppElement extends Components.MainApp, HTMLStencilElement {
     }
@@ -31,6 +79,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "ds-button": HTMLDsButtonElement;
+        "ds-input": HTMLDsInputElement;
         "main-app": HTMLMainAppElement;
     }
 }
@@ -42,10 +91,39 @@ declare namespace LocalJSX {
          */
         "variant"?: 'solid' | 'outline' | 'text';
     }
+    interface DsInput {
+        /**
+          * @default false
+         */
+        "disabled"?: boolean;
+        "error"?: string;
+        "label"?: string;
+        "name"?: string;
+        "onBlur"?: (event: DsInputCustomEvent<void>) => void;
+        "onFocus"?: (event: DsInputCustomEvent<void>) => void;
+        "onInput"?: (event: DsInputCustomEvent<string>) => void;
+        /**
+          * @default ''
+         */
+        "placeholder"?: string;
+        /**
+          * @default false
+         */
+        "required"?: boolean;
+        /**
+          * @default 'text'
+         */
+        "type"?: string;
+        /**
+          * @default ''
+         */
+        "value"?: string;
+    }
     interface MainApp {
     }
     interface IntrinsicElements {
         "ds-button": DsButton;
+        "ds-input": DsInput;
         "main-app": MainApp;
     }
 }
@@ -54,6 +132,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "ds-button": LocalJSX.DsButton & JSXBase.HTMLAttributes<HTMLDsButtonElement>;
+            "ds-input": LocalJSX.DsInput & JSXBase.HTMLAttributes<HTMLDsInputElement>;
             "main-app": LocalJSX.MainApp & JSXBase.HTMLAttributes<HTMLMainAppElement>;
         }
     }
