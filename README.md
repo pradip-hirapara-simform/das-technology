@@ -6,22 +6,22 @@ This repo is an example repo for showing the integration of the stencil-tailwind
 
 Clone the repo, and install the dependencies:
 ```shell
-cd stencil-component-starter
-npm install
+cd  das-technology
+pnpm install
 ```
 
 Start the stencil dev server:
 ```shell
-npm start
+pnpm start
 ```
 
 If you would like to build the application:
 ```shell
-npm run build
+pnpm run build
 ```
+ 
 
-# Example output screen
-
-As an example of what to expect
-
-![example-output-cards](images/example-output.png)
+Start the Storybook server:
+```shell
+pnpm run storybook
+```
