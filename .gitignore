@@ -124,6 +124,7 @@ log.txt
 .vscode/
 .sass-cache/
 .versions/
+storybook-static/
 node_modules/
 $RECYCLE.BIN/
 
