@@ -21,11 +21,11 @@
 
 ## Events
 
-| Event   | Description | Type                  |
-| ------- | ----------- | --------------------- |
-| `blur`  |             | `CustomEvent<void>`   |
-| `focus` |             | `CustomEvent<void>`   |
-| `input` |             | `CustomEvent<string>` |
+| Event     | Description | Type                  |
+| --------- | ----------- | --------------------- |
+| `dsBlur`  |             | `CustomEvent<void>`   |
+| `dsFocus` |             | `CustomEvent<void>`   |
+| `dsInput` |             | `CustomEvent<string>` |
 
 
 ----------------------------------------------

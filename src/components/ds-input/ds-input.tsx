@@ -15,13 +15,13 @@ export class DsInput {
   @Prop() required: boolean = false;
   @Prop() error: string;
 
-  @Event() input: EventEmitter<string>;
-  @Event() blur: EventEmitter<void>;
-  @Event() focus: EventEmitter<void>;
+  @Event() dsInput: EventEmitter<string>;
+  @Event() dsBlur: EventEmitter<void>;
+  @Event() dsFocus: EventEmitter<void>;
 
   private onInput = (event: Event) => {
     const target = event.target as HTMLInputElement;
-    this.input.emit(target.value);
+    this.dsInput.emit(target.value);
   };
 
   render() {
@@ -49,8 +49,8 @@ export class DsInput {
           disabled={this.disabled}
           required={this.required}
           onInput={this.onInput}
-          onBlur={() => this.blur.emit()}
-          onFocus={() => this.focus.emit()}
+          onBlur={() => this.dsBlur.emit()}
+          onFocus={() => this.dsFocus.emit()}
         />
 
         {this.error && (

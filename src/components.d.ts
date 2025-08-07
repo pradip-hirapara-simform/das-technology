@@ -53,9 +53,9 @@ declare global {
         new (): HTMLDsButtonElement;
     };
     interface HTMLDsInputElementEventMap {
-        "input": string;
-        "blur": void;
-        "focus": void;
+        "dsInput": string;
+        "dsBlur": void;
+        "dsFocus": void;
     }
     interface HTMLDsInputElement extends Components.DsInput, HTMLStencilElement {
         addEventListener<K extends keyof HTMLDsInputElementEventMap>(type: K, listener: (this: HTMLDsInputElement, ev: DsInputCustomEvent<HTMLDsInputElementEventMap[K]>) => any, options?: boolean | AddEventListenerOptions): void;
@@ -99,9 +99,9 @@ declare namespace LocalJSX {
         "error"?: string;
         "label"?: string;
         "name"?: string;
-        "onBlur"?: (event: DsInputCustomEvent<void>) => void;
-        "onFocus"?: (event: DsInputCustomEvent<void>) => void;
-        "onInput"?: (event: DsInputCustomEvent<string>) => void;
+        "onDsBlur"?: (event: DsInputCustomEvent<void>) => void;
+        "onDsFocus"?: (event: DsInputCustomEvent<void>) => void;
+        "onDsInput"?: (event: DsInputCustomEvent<string>) => void;
         /**
           * @default ''
          */
